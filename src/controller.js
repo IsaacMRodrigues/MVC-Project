@@ -1,4 +1,4 @@
-import { model } from "./model.js";
+import { model } from "./model/model.js";
 import { construtorGrafico } from "./view.js";
 
 const controller = {
