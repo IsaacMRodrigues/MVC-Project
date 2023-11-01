@@ -1,10 +1,27 @@
-import { model } from "./model/model.js";
-import { construtorGrafico } from "./view.js";
+import { viewController } from "./view/viewController.js";
+import { Usuario } from "./model/usuario-model.js";
 
-const controller = {
-    iniciar: ()=>{
-        construtorGrafico.render(model)
-    }
+let data = [{}]
+
+const saveData = (event) => {
+  event.preventDefault();
+  const newData =  new Usuario(
+    nome.value, 
+    idade.value, 
+    login.value, 
+    senha.value);
+  data.push(newData);
+    viewController.update(data);  
 }
 
-export {controller}
+const controller = {
+  iniciar: () => {
+   viewController.build();
+    const form = document.getElementById('signForm');
+    form.addEventListener('submit', saveData)
+  },
+
+
+};
+
+export { controller};
