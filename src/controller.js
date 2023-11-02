@@ -54,6 +54,8 @@ const controller = {
     const form = document.getElementById("signForm");
     form.addEventListener("submit", saveData);
   },
+
+  
 };
 
 export { controller };
