@@ -5,7 +5,7 @@ const resultView = {
     const root = document.getElementById("root");
     const tableResult = document.createElement("table");
     tableResult.setAttribute("id", "resultTable");
-    tableResult.className = "table table-bordeless";
+    tableResult.className = "table table-bordeless table-hover";
     tableResult.innerHTML = `
         <thead>
       <tr>
@@ -13,15 +13,11 @@ const resultView = {
         <th scope="col">Nome</th>   
         <th scope="col">Idade</th>
         <th scope="col">Login</th>
+        <th scope="col">Senha</th>
       </tr>
     </thead>
-    <tbody>
-      <tr id="users-result">
-        <th scope="row">${1}</th>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+    <tbody id="users-result">
+
     </tbody>
   
     </table>`;
@@ -30,32 +26,46 @@ const resultView = {
   },
 
   update: (params) => {
-
+    const tr = document.createElement('tr')
+    let id = 1;
+    let numero = document.createElement('td');
     
+
+    const italico = document.createElement('i');
     const trBody = document.getElementById('users-result');
     const th = document.createElement('th');
     const tdNome = document.createElement('td');
     const tdIdade = document.createElement('td');
     const tdLogin = document.createElement('td');
     const tdSenha = document.createElement('td');
-
+    
 
     for(let i = 0; i < params.length; i++){
         th.setAttribute('scope', 'row');
         th.innerText = i+1.
 
-        let usuario = params;
 
+        tdNome.setAttribute('style', 'color: green')
+        tdLogin.setAttribute('style', 'color: blue')
+        
+        
+        trBody.appendChild(tr)
+        numero.innerText = id;
+        tr.appendChild(numero)
+        tdNome.innerHTML = `<strong>${params[i].getNome()}</strong>`;
+        tr.appendChild(tdNome);
 
-        tdNome.innerText = params[i].getNome();
-        trBody.appendChild(tdNome);
+        tdIdade.innerHTML = `<strong>${params[i].getIdade()} </strong>`;
+        tr.appendChild(tdIdade);
 
-        tdIdade.innerText = params[i].getIdade();
-        trBody.appendChild(tdIdade);
+        tdLogin.innerHTML = `<strong><i> ${params[i].getLogin()} </i></strong>`;
+        tr.appendChild(tdLogin);
 
-        tdLogin.innerText = params[i].getLogin();
-        trBody.appendChild(tdLogin);
+        tdSenha.innerHTML = `<input class="form-control" type="password" value="${params[i].getSenha()}" disabled ></input>`;
 
+        
+        tr.appendChild(tdSenha);
+        id++;
     }
   }
 };

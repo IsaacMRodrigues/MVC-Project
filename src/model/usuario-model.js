@@ -1,5 +1,5 @@
 class Usuario {
-  construtor(nome, idade, login, senha) {
+  constructor(nome, idade, login, senha) {
     this.nome = nome;
     this.idade = idade;
     this.login = login;

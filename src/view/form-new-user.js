@@ -18,10 +18,13 @@ const formNewUser = {
               <input class="form-control" type="password" id="senha" >
               
               <button type="submit" class="btn btn-primary">Salvar</button>
+              <p id="alerta" style="color: red"></p>
               `;
       root.appendChild(formTemplate);
     },
-    toUpdate: () => {},
+    update: (user) => {
+      
+    },
   };
   
   export { formNewUser };
