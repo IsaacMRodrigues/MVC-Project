@@ -3,56 +3,38 @@ import { Usuario } from "./model/usuario-model.js";
 
 let data = [];
 
-const saveData = (event) => {
+let submitType = {NEW: 0, UPDATE: 1}
+let submitState = submitType.NEW;
 
 
-  function verificaVazio(texto, texto2) {
-
-    if (texto === '') {
-        document.getElementById(texto2).innerHTML = "Preencha todos os campos";
-        return true;
-    } else {
-        document.getElementById(texto2).innerHTML = " ";
-        return false;
-    }
-
-}
-
-
-
-
+const handleSubmit = (event) => {
   event.preventDefault();
-  const nome = document.getElementById("nome").value;
-  const idade = document.getElementById("idade").value;
-  const login = document.getElementById("login").value;
-  const senha = document.getElementById("senha").value;
 
-if (!verificaVazio(nome, "alerta") && !verificaVazio(idade, "alerta") && !verificaVazio(login, "alerta") && !verificaVazio(senha, "alerta")) {
+  const user = new Usuario(nome.value, idade.value, login.value, senha.value);
 
-    const newData = new Usuario(nome, idade, login, senha);
-    data.push(newData);
-    viewController.update(data);
-  
-    document.getElementById("nome").value = "";
-    document.getElementById("idade").value = "";
-    document.getElementById("login").value = "";
-    document.getElementById("senha").value = "";
+  if (submitState == submitType.NEW){
+    addUser(user);
+  } else if (submitState == submitType.UPDATE){
 
   }
+  
+  viewController.update(data, new Usuario("", "", "", ""))
 
-
-
-
-
- 
 
 };
+
+
+const addUser = (newUser) => {
+  data.push(newUser)
+};
+
+
 
 const controller = {
   iniciar: () => {
     viewController.build();
     const form = document.getElementById("signForm");
-    form.addEventListener("submit", saveData);
+    form.addEventListener("submit", handleSubmit);
   },
 
   
