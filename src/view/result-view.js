@@ -68,17 +68,6 @@ const resultView = {
         id++;
     }
 
-    //fazendo função para editar as linhas
-
-    const linhas = document.querySelectorAll('.table tbody tr');
-
-    linhas.forEach((linha) => {
-      linha.addEventListener('click', () => {
-
-        const idDaLinha= linha.querySelector('td:nth-child(1)').textContent;
-        console.log('id da linha clicada:', idDaLinha);
-      });
-    });
   }
 };
 

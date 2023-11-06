@@ -7,8 +7,9 @@ const viewController = {
         resultView.build();
     },
 
-    update: (params) => {
-        resultView.update(params)
+    update: (userArray, userToUpdate) => {
+        resultView.update(userArray)
+        formNewUser.update(userToUpdate)
     }
 }
 

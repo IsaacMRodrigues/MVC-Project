@@ -23,7 +23,10 @@ const formNewUser = {
       root.appendChild(formTemplate);
     },
     update: (user) => {
-      
+      nome.value = user.getNome();
+      idade.value = user.getIdade();
+      login.value = user.getLogin();
+      senha.value = user.getSenha();
     },
   };
   
