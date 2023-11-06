@@ -28,10 +28,9 @@ const resultView = {
   update: (params) => {
 
     const tr = document.createElement('tr')
-    let id = 1;
+    let id = 0;
     let numero = document.createElement('td');
 
-    const italico = document.createElement('i');
     const trBody = document.getElementById('users-result');
     const th = document.createElement('th');
     const tdNome = document.createElement('td');
@@ -69,20 +68,15 @@ const resultView = {
         id++;
     }
 
-    //fazendo função para editar as linhas :)
+    //fazendo função para editar as linhas
 
     const linhas = document.querySelectorAll('.table tbody tr');
 
     linhas.forEach((linha) => {
       linha.addEventListener('click', () => {
 
-        // Acesse outros dados da linha usando os elementos HTML da linha
-        const nomeDaLinha = linha.querySelector('td:nth-child(2)').textContent; // Segunda coluna (nome)
-        const idadeDaLinha = linha.querySelector('td:nth-child(3)').textContent; // Terceira coluna (idade)
-    
-        // Agora você pode fazer o que desejar com os dados da linha clicada
-        console.log('Nome da linha clicada:', nomeDaLinha);
-        console.log('Idade da linha clicada:', idadeDaLinha);
+        const idDaLinha= linha.querySelector('td:nth-child(1)').textContent;
+        console.log('id da linha clicada:', idDaLinha);
       });
     });
   }
