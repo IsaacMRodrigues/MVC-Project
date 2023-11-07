@@ -5,6 +5,7 @@ let data = [];
 
 let submitType = {NEW: 0, UPDATE: 1}
 let submitState = submitType.NEW;
+let currentId = null;
 
 
 const handleSubmit = (event) => {
@@ -15,8 +16,14 @@ const handleSubmit = (event) => {
   if (submitState == submitType.NEW){
     addUser(user);
   } else if (submitState == submitType.UPDATE){
-    attUser(0, user)
+    updateUser(currentId, user);
+    submitState = submitType.NEW;
+    btnSub.innerText = "Adicionar";
   }
+
+  
+
+
   
   viewController.update(data, new Usuario("", "", "", ""))
 
@@ -27,10 +34,23 @@ const addUser = (newUser) => {
   data.push(newUser)
 };
 
+
+const updateUser = (index, userToUpdate) => {
+  data[index] = userToUpdate;
+}
+
+const deleteUser = (index) => {
+  data.splice(index, 1)
+}
+
 const clickEsquerdo = (event) => {
   
-  const currentId =  event.target.closest('tr').id.split("")[4];
-  alert(`${data[currentId].getNome().toUpperCase()} sera carregado para edição`)
+  currentId =  event.target.closest('tr').id.split("")[4];
+  alert(`${data[currentId].getNome().toUpperCase()} sera carregado para edição`);
+  viewController.updateForm(data[currentId])
+  submitState = submitType.UPDATE;
+  btnSub.innerText = "Atualizar";
+
 
 }
 
@@ -39,7 +59,7 @@ const clickDireito = (event) => {
   event.preventDefault();
   if(event.button == 2) {
     
-    const currentId =  event.target.closest('tr').id.split("")[4];
+    currentId =  event.target.closest('tr').id.split("")[4];
     alert(`${data[currentId].getNome().toUpperCase()} sera deletado`)
   }
 }

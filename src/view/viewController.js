@@ -10,6 +10,10 @@ const viewController = {
     update: (userArray, userToUpdate) => {
         resultView.update(userArray)
         formNewUser.update(userToUpdate)
+    },
+
+    updateForm:(userToUpdate)=>{
+        formNewUser.update(userToUpdate);
     }
 }
 
