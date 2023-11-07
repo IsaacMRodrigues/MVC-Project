@@ -1,5 +1,6 @@
 import { viewController } from "./view/viewController.js";
 import { Usuario } from "./model/usuario-model.js";
+import { resultView } from "./view/result-view.js";
 
 let data = [];
 
@@ -10,24 +11,16 @@ let currentId = null;
 
 const handleSubmit = (event) => {
   event.preventDefault();
-
   const user = new Usuario(nome.value, idade.value, login.value, senha.value);
-
   if (submitState == submitType.NEW){
     addUser(user);
   } else if (submitState == submitType.UPDATE){
     updateUser(currentId, user);
     submitState = submitType.NEW;
     btnSub.innerText = "Adicionar";
+    resultView.update(user);
   }
-
-  
-
-
-  
   viewController.update(data, new Usuario("", "", "", ""))
-
-
 };
 
 const addUser = (newUser) => {
