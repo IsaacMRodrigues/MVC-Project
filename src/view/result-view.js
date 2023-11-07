@@ -44,13 +44,14 @@ const resultView = {
         th.innerText = i+1.
 
 
-
+        
         tdNome.setAttribute('style', 'color: green')
         tdLogin.setAttribute('style', 'color: blue')
         
         
         trBody.appendChild(tr)
-        numero.innerText = id;
+        numero.innerText = id + 1;
+        tr.setAttribute('id', `user${id}`)
         tr.appendChild(numero)
         tdNome.innerHTML = `<strong>${params[i].getNome()}</strong>`;
         tr.appendChild(tdNome);

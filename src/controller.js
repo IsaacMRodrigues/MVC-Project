@@ -15,7 +15,7 @@ const handleSubmit = (event) => {
   if (submitState == submitType.NEW){
     addUser(user);
   } else if (submitState == submitType.UPDATE){
-
+    attUser(0, user)
   }
   
   viewController.update(data, new Usuario("", "", "", ""))
@@ -23,11 +23,26 @@ const handleSubmit = (event) => {
 
 };
 
-
 const addUser = (newUser) => {
   data.push(newUser)
 };
 
+const clickEsquerdo = (event) => {
+  
+  const currentId =  event.target.closest('tr').id.split("")[4];
+  alert(`${data[currentId].getNome().toUpperCase()} sera carregado para edição`)
+
+}
+
+
+const clickDireito = (event) => {
+  event.preventDefault();
+  if(event.button == 2) {
+    
+    const currentId =  event.target.closest('tr').id.split("")[4];
+    alert(`${data[currentId].getNome().toUpperCase()} sera deletado`)
+  }
+}
 
 
 const controller = {
@@ -35,6 +50,9 @@ const controller = {
     viewController.build();
     const form = document.getElementById("signForm");
     form.addEventListener("submit", handleSubmit);
+    const userList = document.getElementById('users-result');
+    userList.addEventListener('click', clickEsquerdo)
+    userList.addEventListener('contextmenu', clickDireito)
   },
 
   
