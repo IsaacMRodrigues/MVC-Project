@@ -17,8 +17,8 @@ const formNewUser = {
               <label for="senha" class="form-label">Senha</label>
               <input class="form-control" type="password" id="senha" >
               
-              <button id="btnSub" type="submit" class="btn btn-primary">Salvar</button>
-              <p id="alerta" style="color: red"></p>
+              <button id="btnSub" type="submit" class="btn btn-primary" style="margin-top: 20px;">Salvar</button>
+              <p id="alerta" style="color: red;"></p>
               `;
     root.appendChild(formTemplate);
   },

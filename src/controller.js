@@ -8,8 +8,8 @@ let submitType = { NEW: 0, UPDATE: 1 };
 let submitState = submitType.NEW;
 let currentId = null;
 
-function validaLogin(nome) {
-  return data.some((data) => data.nome === nome);
+function validaLogin(login) {
+  return data.some((data) => data.login === login);
 }
 
 const handleSubmit = (event) => {
@@ -32,6 +32,7 @@ const handleSubmit = (event) => {
       updateUser(currentId, user);
       submitState = submitType.NEW;
       login.disabled = false;
+      senha.disabled = false;
       btnSub.innerText = "Salvar";
       resultView.update(user);
     }
@@ -53,24 +54,30 @@ const deleteUser = (index) => {
 
 const clickEsquerdo = (event) => {
   currentId = event.target.closest("tr").id.split("")[4];
-  alert(
-    `${data[currentId].getNome().toUpperCase()} sera carregado para edição`
-  );
-  viewController.updateForm(data[currentId]);
-  login.disabled = true;
-  submitState = submitType.UPDATE;
-  btnSub.innerText = "Atualizar";
+  const confirmUpdate = window.confirm( `Deseja editar o usuario ${data[currentId].getNome().toUpperCase()} ?`);
+
+    if(confirmUpdate){
+      viewController.updateForm(data[currentId]);
+      login.disabled = true;
+      senha.disabled = true;
+      submitState = submitType.UPDATE;
+      btnSub.innerText = "Atualizar";
+    }
+
 };
 
 const clickDireito = (event) => {
   event.preventDefault();
   if (event.button == 2) {
     currentId = parseInt(event.target.closest("tr").id.split("")[4]);
-    alert(
-      `${data[currentId].getNome().toUpperCase()} sera deletado ${currentId}`
-    );
-    deleteUser(currentId);
-    resultView.update(data);
+
+    const confirmDelete = window.confirm( `Deseja excluir ${data[currentId].getNome().toUpperCase()} da lista ?`)
+
+    if(confirmDelete){
+      deleteUser(currentId);
+      resultView.update(data);
+    }
+    
   }
 };
 
