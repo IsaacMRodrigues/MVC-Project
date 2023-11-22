@@ -10,6 +10,8 @@ let submitState = submitType.NEW;
 let currentId = null;
 
 
+
+
 const loadData = async () => {
   const temp = await dataService.carregarDados();
 
@@ -56,14 +58,17 @@ const handleSubmit = (event) => {
 
 const addUser = (newUser) => {
   data.push(newUser);
+  dataService.salvarDados(data)
 };
 
 const updateUser = (index, userToUpdate) => {
   data[index] = userToUpdate;
+  dataService.salvarDados(data);
 };
 
 const deleteUser = (index) => {
   data.splice(index, 1);
+  dataService.salvarDados(data);
 };
 
 const clickEsquerdo = (event) => {
