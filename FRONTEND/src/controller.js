@@ -21,7 +21,6 @@ const loadData = async () => {
 
 };
 
-
 function validaLogin(login) {
   return data.some((data) => data.login === login);
 }
@@ -41,6 +40,7 @@ const handleSubmit = (event) => {
   } else {
     const user = new Usuario(nome.value, idade.value, login.value, senha.value);
     if (submitState == submitType.NEW) {
+      
       addUser(user);
     } else if (submitState == submitType.UPDATE) {
       updateUser(currentId, user);
