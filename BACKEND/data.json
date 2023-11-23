@@ -1,20 +1,14 @@
 [
   {
     "nome": "Isaac",
-    "idade": 22,
-    "login": "asa",
-    "senha": "asa"
+    "idade": "22",
+    "login": "isaac",
+    "senha": "teste123"
   },
   {
-    "nome": "Isaac2",
-    "idade": 22,
-    "login": "asa",
-    "senha": "asa"
-  },
-  {
-    "nome": "Isaac3",
-    "idade": 22,
-    "login": "asa",
-    "senha": "asa"
+    "nome": "Teste",
+    "idade": "24",
+    "login": "teste",
+    "senha": "teste"
   }
 ]
