@@ -1,13 +1,7 @@
 [
   {
-    "nome": "Isaac",
-    "idade": "22",
-    "login": "isaac",
-    "senha": "teste123"
-  },
-  {
-    "nome": "Teste",
-    "idade": "24",
+    "nome": "teste",
+    "idade": "12",
     "login": "teste",
     "senha": "teste"
   }

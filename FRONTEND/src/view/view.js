@@ -1,8 +1,8 @@
 import { formNewUser } from "./form-new-user.js";
 import { resultView } from "./result-view.js";
 
-const viewController = {
-  build: () => {
+const view = {
+  render: () => {
     formNewUser.build();
     resultView.build();
   },
@@ -17,4 +17,4 @@ const viewController = {
   },
 };
 
-export { viewController };
+export { view };
